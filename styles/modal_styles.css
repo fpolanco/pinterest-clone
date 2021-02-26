@@ -31,8 +31,8 @@
     height: 100%;
 }
 
-#left_side {
-    background-color: orange;
+#left_side  {
+    background-color: rgb(255, 140, 0);
 }
 
 #right_side {
@@ -171,7 +171,15 @@
     align-items: center;
 }
 
-.pin_image img {
+/* .pin_image img {
+    max-height: 100%;
+} */
+
+.pin_max_width {
+    max-width: 100%;
+}
+
+.pin_max_height {
     max-height: 100%;
 }
 
