@@ -22,5 +22,6 @@
 .add_pin_modal {
     opacity: 0;
     pointer-events: none;
+    transition-duration: 0.5s;
 }
 
