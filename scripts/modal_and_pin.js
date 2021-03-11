@@ -62,10 +62,65 @@ document.querySelector('.save_pin').addEventListener('click', () => {
         img_blob: pin_image_blob,
         pin_size: document.querySelector('#pin_size').value
     }
-// create_pin(users)
-    console.log(users_data);
+   create_pin(users_data);
+   reset_modal();
 });
 
+function create_pin(pin_details){
+    const new_pin = document.createElement('DIV');
+    const new_image = new Image();
+
+    new_image.src = pin_details.img_blob;
+    new_pin.style.opacity = 0;
+
+    new_image.onload = function() {
+        new_pin.classList.add('card');
+        new_image.classList.add('pin_max_width');
+
+        new_pin.innerHTML =  `<div class="pin_title">${pin_details.title}</div>
+        <div class="pin_modal">
+            <div class="modal_head">
+                <div class="save_card">Save</div>
+            </div>
+
+            <div class="modal_foot">
+                <div class="destination">
+                    <div class="pint_mock_icon_container">
+                        <img src="./images/arrow2.png" alt="destination" class="pint_mock_icon">
+                    </div>
+                    
+                    <span>${pin_details.destination}</span>
+                </div>
+
+                <div class="pint_mock_icon_container">
+                    <img src="images/sent.png" alt="send" class="pint_mock_icon">
+                </div>
+
+                <div class="pint_mock_icon_container">
+                    <img src="./images/ellipses.png" alt="edit" class="pint_mock_icon">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pin_image">
+        </div>`;
+
+                document.querySelector('.pin_container').appendChild(new_pin);
+                new_pin.children[2].appendChild(new_image);
+
+                if (
+                    new_image.getBoundingClientRect().width < new_image.parentElement.getBoundingClientRect().width ||
+                    new_image.getBoundingClientRect().height < new_image.parentElement.getBoundingClientRect().height
+                ) {
+                    new_image.classList.remove('pin_max_width');
+                    new_image.classList.add('pin_max_height');
+
+                }
+                
+                new_pin.style.opacity = 1;
+    }
+}
 
 
 function reset_modal() {
